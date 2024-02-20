@@ -28,3 +28,11 @@ class Dog:
             # Print the specified message if validation fails.
             print("Name must be string between 1 and 25 characters.")
     name = property(get_name, set_name)
+
+    def __init__(self, breed=""):
+
+
+
+
+
+
