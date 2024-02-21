@@ -12,27 +12,28 @@ APPROVED_BREEDS = [
 ]
 
 class Dog:
-    def __init__(self, name=""):
-        # Directly use the name property to trigger validation.
-        self.name = name
+    def __init__(self, name="Fido", breed="Mastiff"):
+        self.name = name  # This triggers the name setter for validation
+        self.breed = breed
 
-    def get_name(self):
-        # Getter simply returns the value of _name.
+    @property
+    def name(self):
         return self._name
 
-    def set_name(self, value):
-        # Setter includes validation for the name.
+    @name.setter
+    def name(self, value):
         if isinstance(value, str) and 1 <= len(value) <= 25:
             self._name = value
         else:
-            # Print the specified message if validation fails.
             print("Name must be string between 1 and 25 characters.")
-    name = property(get_name, set_name)
 
-    def __init__(self, breed=""):
+    @property
+    def breed(self):
+        return self._breed
 
-
-
-
-
-
+    @breed.setter
+    def breed(self, value):
+        if value in APPROVED_BREEDS:
+            self._breed = value
+        else:
+            print("Breed must be in list of approved breeds.")
